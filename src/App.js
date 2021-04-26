@@ -1,7 +1,8 @@
 import React from 'react';
-import './App.css';
+import './styles/App.css';
 import rockGlass from './images/rockGlass.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BottomMenu from './components/BottomMenu';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       >
         Glass
       </object>
+      <BottomMenu />
     </div>
   );
 }
