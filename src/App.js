@@ -1,8 +1,8 @@
 import React from 'react';
 import './styles/App.css';
 import rockGlass from './images/rockGlass.svg';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import BottomMenu from './components/BottomMenu';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
