@@ -54,14 +54,9 @@ class Login extends Component {
 
   saveLocalStorage() {
     const { email } = this.state;
-    const data = {
-      mealsToken: 1,
-      cocktailsToken: 1,
-      user: {
-        email,
-      },
-    };
-    localStorage.setItem('data', JSON.stringify(data));
+    localStorage.setItem('user', JSON.stringify({ email }));
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
   }
 
   render() {
