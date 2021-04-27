@@ -2,23 +2,47 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { foodThunkAction } from '../action/FoodAndDrinkAction';
+import { filterFoodThunkAction, foodThunkAction } from '../action/FoodAndDrinkAction';
 import FoodCard from '../components/FoodCard';
 
 class Food extends React.Component {
   componentDidMount() {
-    const { setFood } = this.props;
-    setFood();
+    const { setFood, setFilterFood, getFoodBoolean, getFoodName } = this.props;
+    setFood('', getFoodBoolean, getFoodName);
+    setFilterFood();
   }
 
   render() {
-    const { getFood } = this.props;
+    const {
+      getFood,
+      getFilterFood,
+      setFood,
+      getFoodBoolean,
+      getFoodName } = this.props;
+
     return (
       <div>
         <h1>Food</h1>
+        <button
+          type="button"
+          data-testid="All-category-filter"
+          onClick={ () => setFood('All', getFoodBoolean, getFoodName) }
+        >
+          All
+        </button>
+        { getFilterFood.map((filter, index) => (
+          <button
+            type="button"
+            key={ `${filter}${index}` }
+            data-testid={ `${filter.strCategory}-category-filter` }
+            onClick={ () => setFood(filter.strCategory, getFoodBoolean, getFoodName) }
+          >
+            {filter.strCategory}
+          </button>
+        )) }
         <Link to="bebidas">Drinks</Link>
         { getFood.map((food, index) => (
-          <FoodCard key={ food } food={ food } index={ index } />
+          <FoodCard key={ `${food}${index}` } food={ food } index={ index } />
         ))}
       </div>
     );
@@ -27,15 +51,22 @@ class Food extends React.Component {
 
 const mapStateToProps = (state) => ({
   getFood: state.FoodAndDrinkReducer.food,
+  getFilterFood: state.FoodAndDrinkReducer.filterFood,
+  getFoodName: state.FoodAndDrinkReducer.foodName,
+  getFoodBoolean: state.FoodAndDrinkReducer.foodBoolean,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setFood: () => dispatch(foodThunkAction()),
+  setFood: (food, foodBoolean, foodName) => dispatch(
+    foodThunkAction(food, foodBoolean, foodName),
+  ),
+  setFilterFood: () => dispatch(filterFoodThunkAction()),
 });
 
 Food.propTypes = ({
-  setFood: PropTypes.func.isRequired,
-  getFood: PropTypes.arrayOf(PropTypes.object).isRequired,
-});
+  setFood: PropTypes.func,
+  setFilterFood: PropTypes.func,
+  getFood: PropTypes.arrayOf(PropTypes.object),
+}).isRequired;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Food);
