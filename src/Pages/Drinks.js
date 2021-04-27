@@ -41,7 +41,13 @@ class Drinks extends React.Component {
         )) }
         <Link to="comidas">Comidas</Link>
         { getDrinks.map((drink, index) => (
-          <DrinkCard key={ `${drink}${index}` } drink={ drink } index={ index } />
+          <DrinkCard
+            key={ `${drink}${index}` }
+            drink={ drink }
+            index={ index }
+            testid="-recipe-card"
+            nameId="-card-name"
+          />
         ))}
       </div>
     );
