@@ -1,0 +1,43 @@
+.footer {
+  background-color: rgb(196, 196, 196);
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  height: 58px;
+  /* justify-content: space-around; */
+  max-width: 360px;
+  padding: 10px;
+  position: fixed;
+  width: 360px;
+}
+
+.cocktailIcon {
+  height: 40px;
+  left: 16px;
+  position: absolute;
+  width: 40px;
+}
+
+#image0 {
+  cursor: pointer;
+}
+
+.explorerIcon {
+  height: 40px;
+  left: 160px;
+  position: absolute;
+  width: 40px;
+}
+
+.forkIcon {
+  height: 40px;
+  left: 302px;
+  position: absolute;
+  width: 40px;
+}
+
+img {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+}

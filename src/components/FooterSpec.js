@@ -1,14 +1,14 @@
-import '../styles/BottomMenu.css';
+import '../styles/FooterSpec.css';
 import React from 'react';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 
-function BottomMenu() {
+function FooterSpec() {
   return (
     <footer className="footer" data-testid="footer">
       <object
-        className="btnMenuIcon"
+        className="cocktailIcon"
         data={ drinkIcon }
         data-testid="drinks-bottom-btn"
         type="image/svg+xml"
@@ -16,7 +16,7 @@ function BottomMenu() {
         Drinks
       </object>
       <object
-        className="btnMenuIcon"
+        className="explorerIcon"
         data={ exploreIcon }
         data-testid="explore-bottom-btn"
         type="image/svg+xml"
@@ -24,7 +24,7 @@ function BottomMenu() {
         Explore
       </object>
       <object
-        className="btnMenuIcon"
+        className="forkIcon"
         data={ mealIcon }
         data-testid="food-bottom-btn"
         type="image/svg+xml"
@@ -35,4 +35,4 @@ function BottomMenu() {
   );
 }
 
-export default BottomMenu;
+export default FooterSpec;

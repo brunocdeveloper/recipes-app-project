@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import rockGlass from '../images/rockGlass.svg';
 
 class Login extends Component {
   constructor() {
@@ -67,7 +68,15 @@ class Login extends Component {
   render() {
     const { disabled } = this.state;
     return (
-      <div>
+      <div className="meals">
+        <span className="logo">TRYBE</span>
+        <object
+          className="rocksGlass"
+          type="image/svg+xml"
+          data={ rockGlass }
+        >
+          Glass
+        </object>
         <input data-testid="email-input" onChange={ this.handleInputEmail } />
         <input
           data-testid="password-input"
