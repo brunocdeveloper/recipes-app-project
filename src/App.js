@@ -8,11 +8,14 @@ import Login from './components/Login';
 import FoodDetails from './components/FoodDetails';
 import DrinkDetails from './components/DrinkDetails';
 import Profile from './components/Profile';
+import InProgress from './Pages/InProgress';
 
 function App() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
+      <Route path="/comidas/:id/in-progress" component={ InProgress } />
+      <Route path="/bebidas/:id/in-progress" component={ InProgress } />
       <Route path="/comidas/:id" component={ FoodDetails } />
       <Route path="/bebidas/:id" component={ DrinkDetails } />
       <Route path="/comidas" component={ Food } />
