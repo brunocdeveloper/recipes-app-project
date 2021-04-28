@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { foodDetailsThunk } from '../action/FoodAndDrinkDetailsAction';
 import { drinksThunkAction } from '../action/FoodAndDrinkAction';
 import CarouselDetails from '../components/CarouselFoodDetails';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 class FoodDetails extends React.Component {
   constructor(props) {
@@ -53,54 +55,67 @@ class FoodDetails extends React.Component {
     const { getFoodDetails } = this.props;
 
     return (
-      <div>
-        <img
-          src={ getFoodDetails.strMealThumb }
-          alt={ getFoodDetails.strMeal }
-          data-testid="recipe-photo"
-          className="w-50 h-50"
-        />
+      <div className="main">
         <div>
+          <img
+            src={ getFoodDetails.strMealThumb }
+            alt={ getFoodDetails.strMeal }
+            data-testid="recipe-photo"
+            className="img w-50 h-50"
+          />
+        </div>
+        <div className="title">
           <h2 data-testid="recipe-title">{getFoodDetails.strMeal}</h2>
-          <div>
+          <div className="btns">
             <button
+              className="btn"
               type="button"
               data-testid="share-btn"
             >
-              Share
+              <img src={ shareIcon } alt="share icon" className="icoBtn" />
             </button>
             <button
+              className="btn"
               type="button"
               data-testid="favorite-btn"
             >
-              {'<3'}
+              <img src={ whiteHeartIcon } alt="white heart icon" className="icoBtn" />
             </button>
           </div>
         </div>
-        <p data-testid="recipe-category">{getFoodDetails.strCategory}</p>
-        <section>
+        <p data-testid="recipe-category" className="sub">{getFoodDetails.strCategory}</p>
+        <section className="section">
           <h3>Ingredients</h3>
-          {this.ingredientName(getFoodDetails)}
+          <div className="recipe">
+            {this.ingredientName(getFoodDetails)}
+          </div>
         </section>
-        <section>
+        <section className="section">
           <h3>Instructions</h3>
-          <p data-testid="instructions">{getFoodDetails.strInstructions}</p>
+          <p
+            data-testid="instructions"
+            className="recipe"
+          >
+            {getFoodDetails.strInstructions}
+          </p>
         </section>
-        <section>
+        <section className="section">
           <h3>Video</h3>
           <iframe
             title={ getFoodDetails.strMeal }
-            width="560"
-            height="315"
+            width="340"
+            height="165"
             src={ getFoodDetails.strYoutube }
             frameBorder="0"
             allowFullScreen
             data-testid="video"
           />
         </section>
-        <section>
+        <section className="section">
           <h3>Recommended</h3>
-          <CarouselDetails />
+          <div className="carousel">
+            <CarouselDetails />
+          </div>
         </section>
         <button
           type="button"
