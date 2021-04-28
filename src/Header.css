@@ -1,42 +1,42 @@
 .header {
-  background: #C4C4C4;
+  background: #c4c4c4;
   height: 58px;
-  left: 0px;
+  left: 0;
   position: absolute;
-  top: 0px;
+  top: 0;
   width: 360px;
 }
 
 .profile-btn {
-  position: absolute;
-  width: 30px;
+  background: url('./images/profileIcon.svg');
   height: 30px;
   left: 15px;
+  position: absolute;
   top: 12px;
-  background: url(./images/profileIcon.svg);
+  width: 30px;
 }
 
 .page-title {
-  position: absolute;
-  width: 119px;
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-family: Roboto , monospace;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 100;
   height: 35px;
   left: 123px;
-  top: 12px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
   line-height: 35px;
-  display: flex;
-  align-items: flex-end;
-  color: #000000;
+  position: absolute;
+  top: 12px;
+  width: 119px;
 }
 
 .search-btn {
-  position: absolute;
-  width: 30px;
+  background: url('./images/searchIcon.svg');
   height: 30px;
   left: 317px;
+  position: absolute;
   top: 12px;
-  background: url(./images/searchIcon.svg);
+  width: 30px;
 }
