@@ -1,0 +1,42 @@
+.header {
+  background: #C4C4C4;
+  height: 58px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 360px;
+}
+
+.profile-btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 15px;
+  top: 12px;
+  background: url(./images/profileIcon.svg);
+}
+
+.page-title {
+  position: absolute;
+  width: 119px;
+  height: 35px;
+  left: 123px;
+  top: 12px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
+  display: flex;
+  align-items: flex-end;
+  color: #000000;
+}
+
+.search-btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 317px;
+  top: 12px;
+  background: url(./images/searchIcon.svg);
+}
