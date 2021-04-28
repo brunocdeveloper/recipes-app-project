@@ -49,7 +49,13 @@ class Food extends React.Component {
         <Link to="bebidas">Drinks</Link>
         <section className="mainBox">
           { getFood.map((food, index) => (
-            <FoodCard key={ `${food}${index}` } food={ food } index={ index } />
+            <FoodCard
+              key={ `${food}${index}` }
+              food={ food }
+              index={ index }
+              testid="-recipe-card"
+              nameId="-card-name"
+            />
           ))}
         </section>
         <FooterSpec />

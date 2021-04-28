@@ -9,6 +9,11 @@ const getFoodAction = (food, foodBoolean, foodName) => ({
 export const foodThunkAction = (food, foodBoolean, foodName) => async (dispatch) => {
   let endpoint = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
+  if (!food) {
+    foodName = '';
+    foodBoolean = false;
+  }
+
   if (foodName === food && !foodBoolean) {
     foodBoolean = true;
   } else if (food || foodBoolean) {
@@ -47,6 +52,11 @@ const getDrinksAction = (drinks, drinkBoolean, drinkName) => ({
 
 export const drinksThunkAction = (drink, drinkBoolean, drinkName) => async (dispatch) => {
   let endpoint = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+
+  if (!drink) {
+    drinkName = '';
+    drinkBoolean = false;
+  }
 
   if (drinkName === drink && !drinkBoolean) {
     drinkBoolean = true;
