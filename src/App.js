@@ -7,6 +7,7 @@ import Drinks from './Pages/Drinks';
 import Login from './components/Login';
 import FoodDetails from './components/FoodDetails';
 import DrinkDetails from './components/DrinkDetails';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/bebidas/:id" component={ DrinkDetails } />
       <Route path="/comidas" component={ Food } />
       <Route path="/bebidas" component={ Drinks } />
+      <Route path="/perfil" component={ Profile } />
     </Switch>
   );
 }
