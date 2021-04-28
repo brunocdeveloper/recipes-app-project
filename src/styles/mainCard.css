@@ -1,19 +1,18 @@
+.boxImg {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  height: 172px;
+  text-align: center;
+  width: 161px;
+}
+
 .img {
   height: 109px;
   margin-bottom: 20px;
   width: 161px;
-}
-
-.boxImg {
-  display: flex;
-  flex-direction: column;
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  height: 172px;
-  width: 161px;
-  padding: 0;
-  text-align: center;
 }
 
 .link {
