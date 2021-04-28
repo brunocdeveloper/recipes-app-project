@@ -2,7 +2,6 @@ import '../styles/mainScreen.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { drinksThunkAction, filterDrinksThunkAction } from '../action/FoodAndDrinkAction';
 import DrinkCard from '../components/DrinkCard';
 import FooterSpec from '../components/FooterSpec';
@@ -46,7 +45,6 @@ class Drinks extends React.Component {
             </button>
           )) }
         </aside>
-        <Link to="comidas">Comidas</Link>
         <section className="mainBox">
           { getDrinks.map((drink, index) => (
             <DrinkCard

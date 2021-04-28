@@ -16,7 +16,7 @@ function FooterSpec() {
           src={ drinkIcon }
         />
       </Link>
-      <Link to="/">
+      <Link to="/explorar">
         <img
           alt="explore icon"
           className="explorerIcon"

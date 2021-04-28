@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { foodDetailsThunk } from '../action/FoodAndDrinkDetailsAction';
 import { drinksThunkAction } from '../action/FoodAndDrinkAction';
-import CarouselDetails from './CarouselFoodDetails';
+import CarouselDetails from '../components/CarouselFoodDetails';
 
 class FoodDetails extends React.Component {
   constructor(props) {

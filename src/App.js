@@ -5,9 +5,10 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './Pages/Login';
 import Food from './Pages/Food';
 import Drinks from './Pages/Drinks';
-import FoodDetails from './components/FoodDetails';
-import DrinkDetails from './components/DrinkDetails';
-import Profile from './components/Profile';
+import FoodDetails from './Pages/FoodDetails';
+import DrinkDetails from './Pages/DrinkDetails';
+import Profile from './Pages/Profile';
+import Explore from './Pages/Explore';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route exact path="/" component={ Login } />
       <Route path="/comidas/:id" component={ FoodDetails } />
       <Route path="/bebidas/:id" component={ DrinkDetails } />
+      <Route path="/explorar" component={ Explore } />
       <Route path="/comidas" component={ Food } />
       <Route path="/bebidas" component={ Drinks } />
       <Route path="/perfil" component={ Profile } />
