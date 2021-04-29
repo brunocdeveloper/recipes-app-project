@@ -13,11 +13,11 @@ class Profile extends Component {
   }
 
   render() {
-    // const user = JSON.parse(localStorage.getItem('user'));
-    // const { email } = user;
+    const user = JSON.parse(localStorage.getItem('user'));
+    const { email } = user;
     return (
       <div>
-        {/* <p data-testid="profile-email">{ email }</p> */}
+        <p data-testid="profile-email">{ email }</p>
         <Link to="/receitas-feitas">
           <button type="button" data-testid="profile-done-btn">Receitas Feitas</button>
         </Link>

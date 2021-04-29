@@ -18,7 +18,6 @@ class CarouselDetails extends React.Component {
   createCard(numb1, numb2) {
     let magicNumber = numb1 - 1;
     const { getDrinks } = this.props;
-    console.log(getDrinks.slice(numb1, numb2));
     return (
       <div className="cardDetails">
         {getDrinks.slice(numb1, numb2).map((drink) => {
