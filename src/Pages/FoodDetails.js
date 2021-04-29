@@ -61,7 +61,7 @@ class FoodDetails extends React.Component {
             src={ getFoodDetails.strMealThumb }
             alt={ getFoodDetails.strMeal }
             data-testid="recipe-photo"
-            className="img w-50 h-50"
+            className="image"
           />
         </div>
         <div className="title">
@@ -117,12 +117,15 @@ class FoodDetails extends React.Component {
             <CarouselDetails />
           </div>
         </section>
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-        >
-          Start Recipe
-        </button>
+        <div className="botton">
+          <button
+            className="btnBottom"
+            type="button"
+            data-testid="start-recipe-btn"
+          >
+            Start Recipe
+          </button>
+        </div>
       </div>
     );
   }

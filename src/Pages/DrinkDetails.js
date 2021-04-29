@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { drinkDetailsThunk } from '../action/FoodAndDrinkDetailsAction';
 import { foodThunkAction } from '../action/FoodAndDrinkAction';
 import CarouselDrinkDetails from '../components/CarouselDrinkDetails';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 class DrinkDetails extends React.Component {
   constructor(props) {
@@ -53,47 +55,62 @@ class DrinkDetails extends React.Component {
 
     return (
       <div>
-        <img
-          src={ getDrinkDetails.strDrinkThumb }
-          alt={ getDrinkDetails.strDrink }
-          data-testid="recipe-photo"
-        />
         <div>
+          <img
+            src={ getDrinkDetails.strDrinkThumb }
+            alt={ getDrinkDetails.strDrink }
+            data-testid="recipe-photo"
+            className="image"
+          />
+        </div>
+        <div className="title">
           <h2 data-testid="recipe-title">{getDrinkDetails.strDrink}</h2>
-          <div>
+          <div className="btns">
             <button
+              className="btn"
               type="button"
               data-testid="share-btn"
             >
-              Share
+              <img src={ shareIcon } alt="share icon" className="icoBtn" />
             </button>
             <button
+              className="btn"
               type="button"
               data-testid="favorite-btn"
             >
-              {'<3'}
+              <img src={ whiteHeartIcon } alt="white heart icon" className="icoBtn" />
             </button>
           </div>
         </div>
         <p data-testid="recipe-category">{getDrinkDetails.strAlcoholic}</p>
-        <section>
+        <section className="section">
           <h3>Ingredients</h3>
-          {this.ingredientName(getDrinkDetails)}
+          <div className="recipe">
+            {this.ingredientName(getDrinkDetails)}
+          </div>
         </section>
-        <section>
+        <section className="section">
           <h3>Instructions</h3>
-          <p data-testid="instructions">{getDrinkDetails.strInstructions}</p>
+          <p
+            data-testid="instructions"
+            className="recipe"
+          >
+            {getDrinkDetails.strInstructions}
+          </p>
         </section>
-        <section>
+        <section className="section">
           <h3>Recommended</h3>
           <CarouselDrinkDetails />
         </section>
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-        >
-          Start Recipe
-        </button>
+        <div className="botton">
+          <button
+            className="btnBottom"
+            type="button"
+            data-testid="start-recipe-btn"
+          >
+            Start Recipe
+          </button>
+        </div>
       </div>
     );
   }
