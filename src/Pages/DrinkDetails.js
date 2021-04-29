@@ -1,14 +1,14 @@
+import '../styles/Details.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { foodDetailsThunk } from '../action/FoodAndDrinkDetailsAction';
-import { drinksThunkAction } from '../action/FoodAndDrinkAction';
-import CarouselDetails from './CarouselFoodDetails';
-import '../css/Details.css';
+import { drinkDetailsThunk } from '../action/FoodAndDrinkDetailsAction';
+import { foodThunkAction } from '../action/FoodAndDrinkAction';
+import CarouselDrinkDetails from '../components/CarouselDrinkDetails';
 import { doneRecipesAction, inProgressRecipesAction } from '../action/ButtonAction';
 
-class FoodDetails extends React.Component {
+class DrinkDetails extends React.Component {
   constructor(props) {
     super(props);
 
@@ -17,26 +17,26 @@ class FoodDetails extends React.Component {
 
   componentDidMount() {
     const { match: { params: { id } },
-      setFoodDetails,
-      setDrinks,
-      getDrinkBoolean,
-      getDrinkName,
+      setDrinksDetails,
+      setFood,
+      getFoodBoolean,
+      getFoodName,
       setDone,
       setProgress } = this.props;
 
-    setFoodDetails(id);
-    setDrinks('', getDrinkBoolean, getDrinkName);
+    setDrinksDetails(id);
+    setFood('', getFoodBoolean, getFoodName);
     const localDone = JSON.parse(localStorage.getItem('doneRecipes'));
     setDone(localDone);
     const localProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    setProgress(localProgress, 'meals');
+    setProgress(localProgress, 'cocktails');
   }
 
-  entreisLoop(food, type, bug) {
+  entreisLoop(food, type) {
     let indexDetails = 1;
     let resultFilter = [];
     Object.entries(food).filter((foodFilter) => {
-      if (foodFilter[0] === `str${type}${indexDetails}` && foodFilter[1] !== bug) {
+      if (foodFilter[0] === `str${type}${indexDetails}` && foodFilter[1]) {
         indexDetails += 1;
         resultFilter = [...resultFilter, foodFilter[1]];
       }
@@ -45,9 +45,9 @@ class FoodDetails extends React.Component {
     return resultFilter;
   }
 
-  ingredientName(food) {
-    const ingredientFilter = this.entreisLoop(food, 'Ingredient', '');
-    const measureFilter = this.entreisLoop(food, 'Measure', ' ');
+  ingredientName(drink) {
+    const ingredientFilter = this.entreisLoop(drink, 'Ingredient');
+    const measureFilter = this.entreisLoop(drink, 'Measure');
 
     const totalIngredient = ingredientFilter.map((ingredient, index) => (
       <p key={ ingredient } data-testid={ `${index}-ingredient-name-and-measure` }>
@@ -57,17 +57,13 @@ class FoodDetails extends React.Component {
     return totalIngredient;
   }
 
-  button() {
-
-  }
-
   render() {
     const { match: { params: { id } },
-      getFoodDetails, getInProgress, getDoneRecipes } = this.props;
+      getDrinkDetails, getInProgress, getDoneRecipes } = this.props;
     let nameButton = 'Iniciar Receita';
     let classButton = true;
 
-    if (getInProgress && Object.values(getInProgress.meals)
+    if (getInProgress && Object.values(getInProgress.cocktails)
       .find((progress) => Object.keys(progress)[0] === id)) {
       nameButton = 'Continuar Receita';
     }
@@ -79,13 +75,12 @@ class FoodDetails extends React.Component {
     return (
       <div>
         <img
-          src={ getFoodDetails.strMealThumb }
-          alt={ getFoodDetails.strMeal }
+          src={ getDrinkDetails.strDrinkThumb }
+          alt={ getDrinkDetails.strDrink }
           data-testid="recipe-photo"
-          className="w-50 h-50"
         />
         <div>
-          <h2 data-testid="recipe-title">{getFoodDetails.strMeal}</h2>
+          <h2 data-testid="recipe-title">{getDrinkDetails.strDrink}</h2>
           <div>
             <button
               type="button"
@@ -101,34 +96,22 @@ class FoodDetails extends React.Component {
             </button>
           </div>
         </div>
-        <p data-testid="recipe-category">{getFoodDetails.strCategory}</p>
+        <p data-testid="recipe-category">{getDrinkDetails.strAlcoholic}</p>
         <section>
           <h3>Ingredients</h3>
-          {this.ingredientName(getFoodDetails)}
+          {this.ingredientName(getDrinkDetails)}
         </section>
         <section>
           <h3>Instructions</h3>
-          <p data-testid="instructions">{getFoodDetails.strInstructions}</p>
-        </section>
-        <section>
-          <h3>Video</h3>
-          <iframe
-            title={ getFoodDetails.strMeal }
-            width="560"
-            height="315"
-            src={ getFoodDetails.strYoutube }
-            frameBorder="0"
-            allowFullScreen
-            data-testid="video"
-          />
+          <p data-testid="instructions">{getDrinkDetails.strInstructions}</p>
         </section>
         <section>
           <h3>Recommended</h3>
-          <CarouselDetails className="carousel" />
+          <CarouselDrinkDetails className="carousel" />
         </section>
         <section>
           { classButton && (
-            <Link to={ `/comidas/${id}/in-progress` }>
+            <Link to={ `/bebidas/${id}/in-progress` }>
               <button
                 type="button"
                 className="button_start"
@@ -145,26 +128,26 @@ class FoodDetails extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  getFoodDetails: state.FoodAndDrinkDetailsReducer.foodDetails,
-  getDrinks: state.FoodAndDrinkReducer.drinks,
-  getDrinkName: state.FoodAndDrinkReducer.drinkName,
-  getDrinkBoolean: state.FoodAndDrinkReducer.drinkBoolean,
+  getDrinkDetails: state.FoodAndDrinkDetailsReducer.drinkDetails,
+  getFood: state.FoodAndDrinkReducer.food,
+  getFoodName: state.FoodAndDrinkReducer.foodName,
+  getFoodBoolean: state.FoodAndDrinkReducer.foodBoolean,
   getInProgress: state.ButtonReducer.inProgressRecipes,
   getDoneRecipes: state.ButtonReducer.doneRecipes,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setFoodDetails: (id) => dispatch(foodDetailsThunk(id)),
-  setDrinks: (drink, drinkBoolean, drinkName) => dispatch(
-    drinksThunkAction(drink, drinkBoolean, drinkName),
+  setDrinksDetails: (id) => dispatch(drinkDetailsThunk(id)),
+  setFood: (food, drinkBoolean, drinkName) => dispatch(
+    foodThunkAction(food, drinkBoolean, drinkName),
   ),
   setDone: (done) => dispatch(doneRecipesAction(done)),
-  setProgress: (progress, id) => dispatch(inProgressRecipesAction(progress, id)),
+  setProgress: (progress, name) => dispatch(inProgressRecipesAction(progress, name)),
 });
 
-FoodDetails.propTypes = ({
-  getFoodDetails: PropTypes.arrayOf(PropTypes.object),
-  setFoodDetails: PropTypes.func,
+DrinkDetails.propTypes = ({
+  getDrinkDetails: PropTypes.arrayOf(PropTypes.object),
+  setDrinksDetails: PropTypes.func,
 }).isRequired;
 
-export default connect(mapStateToProps, mapDispatchToProps)(FoodDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(DrinkDetails);

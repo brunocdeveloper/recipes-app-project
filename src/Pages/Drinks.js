@@ -1,9 +1,10 @@
+import '../styles/mainScreen.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { drinksThunkAction, filterDrinksThunkAction } from '../action/FoodAndDrinkAction';
 import DrinkCard from '../components/DrinkCard';
+import FooterSpec from '../components/FooterSpec';
 
 class Drinks extends React.Component {
   componentDidMount() {
@@ -20,35 +21,42 @@ class Drinks extends React.Component {
       getDrinkName } = this.props;
 
     return (
-      <div>
+      <div className="main">
         <h1>Drinks</h1>
-        <button
-          type="button"
-          data-testid="All-category-filter"
-          onClick={ () => setDrinks('All', getDrinkBoolean, getDrinkName) }
-        >
-          All
-        </button>
-        { getFilterDrink.map((filter, index) => (
+        <aside className="aside">
           <button
+            className="button"
             type="button"
-            key={ `${filter}${index}` }
-            data-testid={ `${filter.strCategory}-category-filter` }
-            onClick={ () => setDrinks(filter.strCategory, getDrinkBoolean, getDrinkName) }
+            data-testid="All-category-filter"
+            onClick={ () => setDrinks('All', getDrinkBoolean, getDrinkName) }
           >
-            {filter.strCategory}
+            All
           </button>
-        )) }
-        <Link to="comidas">Comidas</Link>
-        { getDrinks.map((drink, index) => (
-          <DrinkCard
-            key={ `${drink}${index}` }
-            drink={ drink }
-            index={ index }
-            testid="-recipe-card"
-            nameId="-card-name"
-          />
-        ))}
+          { getFilterDrink.map((filter, index) => (
+            <button
+              className="button"
+              type="button"
+              key={ `${filter}${index}` }
+              data-testid={ `${filter.strCategory}-category-filter` }
+              onClick={ () => setDrinks(filter.strCategory,
+                getDrinkBoolean, getDrinkName) }
+            >
+              {filter.strCategory}
+            </button>
+          )) }
+        </aside>
+        <section className="mainBox">
+          { getDrinks.map((drink, index) => (
+            <DrinkCard
+              key={ `${drink}${index}` }
+              drink={ drink }
+              index={ index }
+              testid="-recipe-card"
+              nameId="-card-name"
+            />
+          ))}
+        </section>
+        <FooterSpec />
       </div>
     );
   }

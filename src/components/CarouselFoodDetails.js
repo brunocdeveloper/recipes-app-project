@@ -1,10 +1,10 @@
+import '../styles/Details.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Carousel } from 'react-bootstrap';
 import { drinksThunkAction } from '../action/FoodAndDrinkAction';
 import DrinkCard from './DrinkCard';
-import '../css/Details.css';
 
 class CarouselDetails extends React.Component {
   componentDidMount() {

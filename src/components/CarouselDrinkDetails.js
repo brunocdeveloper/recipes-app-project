@@ -1,9 +1,9 @@
+import '../styles/Details.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Carousel } from 'react-bootstrap';
 import { foodThunkAction } from '../action/FoodAndDrinkAction';
-import '../css/Details.css';
 import FoodCard from './FoodCard';
 
 class CarouselDrinkDetails extends React.Component {

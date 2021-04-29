@@ -6,13 +6,13 @@ class DrinkCard extends React.Component {
   render() {
     const { drink, index, testid, nameId } = this.props;
     return (
-      <Link to={ `/bebidas/${drink.idDrink}` }>
-        <div data-testid={ `${index}${testid}` }>
+      <Link to={ `/bebidas/${drink.idDrink}` } className="link">
+        <div data-testid={ `${index}${testid}` } className="boxImg">
           <img
             src={ drink.strDrinkThumb }
             alt={ drink.strDrink }
             data-testid={ `${index}-card-img` }
-            className="w-100 h-50"
+            className="img w-100 h-50"
           />
           <p data-testid={ `${index}${nameId}` }>{drink.strDrink}</p>
         </div>
