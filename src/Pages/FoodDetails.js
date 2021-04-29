@@ -2,9 +2,11 @@ import '../styles/Details.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { foodDetailsThunk } from '../action/FoodAndDrinkDetailsAction';
 import { drinksThunkAction } from '../action/FoodAndDrinkAction';
 import CarouselDetails from '../components/CarouselFoodDetails';
+import { doneRecipesAction, inProgressRecipesAction } from '../action/ButtonAction';
 
 class FoodDetails extends React.Component {
   constructor(props) {
@@ -18,10 +20,16 @@ class FoodDetails extends React.Component {
       setFoodDetails,
       setDrinks,
       getDrinkBoolean,
-      getDrinkName } = this.props;
+      getDrinkName,
+      setDone,
+      setProgress } = this.props;
 
     setFoodDetails(id);
     setDrinks('', getDrinkBoolean, getDrinkName);
+    const localDone = JSON.parse(localStorage.getItem('doneRecipes'));
+    setDone(localDone);
+    const localProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    setProgress(localProgress, 'meals');
   }
 
   entreisLoop(food, type, bug) {
@@ -49,8 +57,24 @@ class FoodDetails extends React.Component {
     return totalIngredient;
   }
 
+  button() {
+
+  }
+
   render() {
-    const { getFoodDetails } = this.props;
+    const { match: { params: { id } },
+      getFoodDetails, getInProgress, getDoneRecipes } = this.props;
+    let nameButton = 'Iniciar Receita';
+    let classButton = true;
+
+    if (getInProgress && Object.values(getInProgress.meals)
+      .find((progress) => Object.keys(progress)[0] === id)) {
+      nameButton = 'Continuar Receita';
+    }
+
+    if (getDoneRecipes && getDoneRecipes.find((done) => done.id === id)) {
+      classButton = false;
+    }
 
     return (
       <div>
@@ -100,14 +124,21 @@ class FoodDetails extends React.Component {
         </section>
         <section>
           <h3>Recommended</h3>
-          <CarouselDetails />
+          <CarouselDetails className="carousel" />
         </section>
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-        >
-          Start Recipe
-        </button>
+        <section>
+          { classButton && (
+            <Link to={ `/comidas/${id}/in-progress` }>
+              <button
+                type="button"
+                className="button_start"
+                data-testid="start-recipe-btn"
+              >
+                {nameButton}
+              </button>
+            </Link>
+          )}
+        </section>
       </div>
     );
   }
@@ -118,6 +149,8 @@ const mapStateToProps = (state) => ({
   getDrinks: state.FoodAndDrinkReducer.drinks,
   getDrinkName: state.FoodAndDrinkReducer.drinkName,
   getDrinkBoolean: state.FoodAndDrinkReducer.drinkBoolean,
+  getInProgress: state.ButtonReducer.inProgressRecipes,
+  getDoneRecipes: state.ButtonReducer.doneRecipes,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -125,6 +158,8 @@ const mapDispatchToProps = (dispatch) => ({
   setDrinks: (drink, drinkBoolean, drinkName) => dispatch(
     drinksThunkAction(drink, drinkBoolean, drinkName),
   ),
+  setDone: (done) => dispatch(doneRecipesAction(done)),
+  setProgress: (progress, id) => dispatch(inProgressRecipesAction(progress, id)),
 });
 
 FoodDetails.propTypes = ({

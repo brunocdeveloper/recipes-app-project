@@ -11,11 +11,14 @@ import Profile from './Pages/Profile';
 import Explore from './Pages/Explore';
 import ExploreFoods from './Pages/ExploreFoods';
 import ExploreDrinks from './Pages/ExploreDrinks';
+import InProgress from './Pages/InProgress';
 
 function App() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
+      <Route path="/comidas/:id/in-progress" component={ InProgress } />
+      <Route path="/bebidas/:id/in-progress" component={ InProgress } />
       <Route path="/comidas/:id" component={ FoodDetails } />
       <Route path="/bebidas/:id" component={ DrinkDetails } />
       <Route exact path="/explorar" component={ Explore } />
