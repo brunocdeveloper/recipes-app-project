@@ -51,7 +51,6 @@ class FoodDetails extends React.Component {
 
   render() {
     const { getFoodDetails } = this.props;
-
     return (
       <div>
         <img
