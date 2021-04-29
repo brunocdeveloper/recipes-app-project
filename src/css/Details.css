@@ -2,3 +2,12 @@
   display: flex;
   text-align: center;
 }
+
+.carousel {
+  margin-bottom: 50px;
+}
+
+.button_start {
+  bottom: 0;
+  position: fixed;
+}
