@@ -5,13 +5,15 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './Pages/Login';
 import Food from './Pages/Food';
 import Drinks from './Pages/Drinks';
-import InProgress from './Pages/InProgress';
 import DrinkDetails from './Pages/DrinkDetails';
 import Profile from './Pages/Profile';
 import Explore from './Pages/Explore';
-import FoodDetails from './Pages/FoodDetails';
 import ExploreFoods from './Pages/ExploreFoods';
 import ExploreDrinks from './Pages/ExploreDrinks';
+import InProgress from './Pages/InProgress';
+import FoodDetails from './Pages/FoodDetails';
+import ExploreFoodIngredient from './Pages/ExploreFoodIngredients';
+import ExploreDrinkIngredients from './Pages/ExploreDrinkIngredients';
 
 function App() {
   return (
@@ -27,6 +29,16 @@ function App() {
       <Route path="/perfil" component={ Profile } />
       <Route exact path="/explorar/comidas" component={ ExploreFoods } />
       <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />
+      <Route
+        exact
+        path="/explorar/comidas/ingredientes"
+        component={ ExploreFoodIngredient }
+      />
+      <Route
+        exact
+        path="/explorar/bebidas/ingredientes"
+        component={ ExploreDrinkIngredients }
+      />
     </Switch>
   );
 }
