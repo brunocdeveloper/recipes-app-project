@@ -15,9 +15,7 @@ function ExploreFoods() {
     state.FoodAndDrinkDetailsReducer.foodDetails
   ));
 
-  useEffect(() => {
-    randomFoodDetails();
-  }, []);
+  useEffect(randomFoodDetails, [dispatch]);
 
   return (
     <div>
