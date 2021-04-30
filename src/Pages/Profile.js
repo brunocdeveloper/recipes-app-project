@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import FooterSpec from '../components/FooterSpec';
 
 class Profile extends Component {
   constructor() {
@@ -37,6 +38,7 @@ class Profile extends Component {
             Sair
           </button>
         </Link>
+        <FooterSpec />
       </div>
     );
   }

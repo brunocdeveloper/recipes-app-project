@@ -1,0 +1,29 @@
+.aside {
+  display: flex;
+  flex-flow: row wrap;
+  height: 70px;
+  justify-content: space-evenly;
+}
+
+.button {
+  font-size: 0.6rem;
+  height: 28px;
+  margin-bottom: 5px;
+  width: 105px;
+}
+
+.main {
+  height: 640px;
+  max-height: 640px;
+  max-width: 360px;
+  padding: 0;
+  width: 360px;
+}
+
+.mainBox {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin-bottom: 160px;
+  width: 100%;
+}

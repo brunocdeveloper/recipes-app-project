@@ -1,10 +1,10 @@
+import '../styles/Details.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Carousel } from 'react-bootstrap';
 import { drinksThunkAction } from '../action/FoodAndDrinkAction';
 import DrinkCard from './DrinkCard';
-import '../css/Details.css';
 
 class CarouselDetails extends React.Component {
   componentDidMount() {
@@ -23,13 +23,15 @@ class CarouselDetails extends React.Component {
         {getDrinks.slice(numb1, numb2).map((drink) => {
           magicNumber += 1;
           return (
-            <DrinkCard
-              key={ `${drink}${magicNumber}` }
-              drink={ drink }
-              index={ magicNumber }
-              testid="-recomendation-card"
-              nameId="-recomendation-title"
-            />
+            <div key={ magicNumber } className="cardDtls">
+              <DrinkCard
+                key={ `${drink}${magicNumber}` }
+                drink={ drink }
+                index={ magicNumber }
+                testid="-recomendation-card"
+                nameId="-recomendation-title"
+              />
+            </div>
           );
         })}
       </div>
