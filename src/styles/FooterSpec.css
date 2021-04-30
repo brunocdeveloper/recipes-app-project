@@ -1,0 +1,36 @@
+.cocktailIcon {
+  border: none;
+  height: 40px;
+  width: 40px;
+}
+
+.explorerIcon {
+  border: none;
+  height: 40px;
+  width: 40px;
+}
+
+.footer {
+  background-color: rgb(196, 196, 196);
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  height: 58px;
+  justify-content: space-between;
+  max-width: 360px;
+  padding: 10px 20px 10px 16px;
+  position: fixed;
+  width: 360px;
+}
+
+.mealIcon {
+  border: none;
+  height: 40px;
+  width: 40px;
+}
+
+img {
+  border: 1px solid black;
+  height: 40px;
+  width: 40px;
+}
