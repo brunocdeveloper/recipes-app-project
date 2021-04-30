@@ -5,13 +5,13 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './Pages/Login';
 import Food from './Pages/Food';
 import Drinks from './Pages/Drinks';
-import FoodDetails from './Pages/FoodDetails';
 import DrinkDetails from './Pages/DrinkDetails';
 import Profile from './Pages/Profile';
 import Explore from './Pages/Explore';
 import ExploreFoods from './Pages/ExploreFoods';
 import ExploreDrinks from './Pages/ExploreDrinks';
 import InProgress from './Pages/InProgress';
+import FoodDetails from './Pages/FoodDetails';
 
 function App() {
   return (
