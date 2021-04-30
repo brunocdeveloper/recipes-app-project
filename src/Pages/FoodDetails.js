@@ -146,7 +146,6 @@ class FoodDetails extends React.Component {
     if (getDoneRecipes && getDoneRecipes.find((done) => done.id === id)) {
       classButton = false;
     }
-
     return (
       <div>
         <img
