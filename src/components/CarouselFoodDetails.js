@@ -23,13 +23,15 @@ class CarouselDetails extends React.Component {
         {getDrinks.slice(numb1, numb2).map((drink) => {
           magicNumber += 1;
           return (
-            <DrinkCard
-              key={ `${drink}${magicNumber}` }
-              drink={ drink }
-              index={ magicNumber }
-              testid="-recomendation-card"
-              nameId="-recomendation-title"
-            />
+            <div key={ magicNumber } className="cardDtls">
+              <DrinkCard
+                key={ `${drink}${magicNumber}` }
+                drink={ drink }
+                index={ magicNumber }
+                testid="-recomendation-card"
+                nameId="-recomendation-title"
+              />
+            </div>
           );
         })}
       </div>
